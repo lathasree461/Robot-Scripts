@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.6.8 on win32)" generated="20190724 16:53:13.201" rpa="false">
+<suite id="s1" name="Libraryimport" source="C:\Users\Admin\PycharmProjects\robot scripts\amazon\Libraryimport.robot">
+<test id="s1-t1" name="Validated Successful addition of numbers">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${param1}</var>
+</assign>
+<msg timestamp="20190724 16:53:13.248" level="INFO">${param1} = 2</msg>
+<status status="PASS" starttime="20190724 16:53:13.248" endtime="20190724 16:53:13.248"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<assign>
+<var>${param2}</var>
+</assign>
+<msg timestamp="20190724 16:53:13.248" level="INFO">${param2} = 3</msg>
+<status status="PASS" starttime="20190724 16:53:13.248" endtime="20190724 16:53:13.248"></status>
+</kw>
+<kw name="Convert To Number" library="BuiltIn">
+<doc>Converts the given item to a floating point number.</doc>
+<arguments>
+<arg>${param1}</arg>
+</arguments>
+<assign>
+<var>${value1}</var>
+</assign>
+<msg timestamp="20190724 16:53:13.248" level="INFO">${value1} = 2.0</msg>
+<status status="PASS" starttime="20190724 16:53:13.248" endtime="20190724 16:53:13.248"></status>
+</kw>
+<kw name="Convert To Number" library="BuiltIn">
+<doc>Converts the given item to a floating point number.</doc>
+<arguments>
+<arg>${param2}</arg>
+</arguments>
+<assign>
+<var>${value2}</var>
+</assign>
+<msg timestamp="20190724 16:53:13.248" level="INFO">${value2} = 3.0</msg>
+<status status="PASS" starttime="20190724 16:53:13.248" endtime="20190724 16:53:13.248"></status>
+</kw>
+<kw name="Calculate Addition" library="LibraryResource">
+<arguments>
+<arg>${value1}</arg>
+<arg>${value2}</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Addition Demo" library="addition">
+<arguments>
+<arg>${arg1}</arg>
+<arg>${arg2}</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<msg timestamp="20190724 16:53:13.248" level="INFO">${result} = 5.0</msg>
+<status status="PASS" starttime="20190724 16:53:13.248" endtime="20190724 16:53:13.248"></status>
+</kw>
+<msg timestamp="20190724 16:53:13.248" level="INFO">${result} = 5.0</msg>
+<status status="PASS" starttime="20190724 16:53:13.248" endtime="20190724 16:53:13.248"></status>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<arguments>
+<arg>5</arg>
+<arg>${result}</arg>
+</arguments>
+<msg timestamp="20190724 16:53:13.248" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;class 'float'&gt;</msg>
+<status status="PASS" starttime="20190724 16:53:13.248" endtime="20190724 16:53:13.248"></status>
+</kw>
+<doc>Test case to validate user define library import</doc>
+<tags>
+<tag>lastrun</tag>
+</tags>
+<status status="PASS" starttime="20190724 16:53:13.232" endtime="20190724 16:53:13.248" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Read from CSV file">
+<kw name="Open CSV File" library="LibraryResource">
+<arguments>
+<arg>${CSV_FILENAME}</arg>
+</arguments>
+<assign>
+<var>${fileob}</var>
+</assign>
+<kw name="Open Csv File From Device" library="csvreader">
+<arguments>
+<arg>${filename}</arg>
+</arguments>
+<assign>
+<var>${fileob}</var>
+</assign>
+<msg timestamp="20190724 16:53:13.263" level="INFO">${fileob} = &lt;_io.TextIOWrapper name='Resources/DemoCSVFile.csv' mode='r' encoding='cp1252'&gt;</msg>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<msg timestamp="20190724 16:53:13.263" level="INFO">${fileob} = &lt;_io.TextIOWrapper name='Resources/DemoCSVFile.csv' mode='r' encoding='cp1252'&gt;</msg>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${None}</arg>
+<arg>${fileob}</arg>
+</arguments>
+<msg timestamp="20190724 16:53:13.263" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;class '_io.TextIOWrapper'&gt;</msg>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<kw name="Read First Line From File" library="LibraryResource">
+<arguments>
+<arg>${fileob}</arg>
+</arguments>
+<assign>
+<var>${line}</var>
+</assign>
+<kw name="Read First Line From Device" library="csvreader">
+<arguments>
+<arg>${fileobject}</arg>
+</arguments>
+<assign>
+<var>${line}</var>
+</assign>
+<msg timestamp="20190724 16:53:13.263" level="INFO">${line} = ['Value11', 'value12', 'value13']</msg>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<msg timestamp="20190724 16:53:13.263" level="INFO">${line} = ['Value11', 'value12', 'value13']</msg>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${line}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190724 16:53:13.263" level="INFO">Length is 3</msg>
+<msg timestamp="20190724 16:53:13.263" level="INFO">${length} = 3</msg>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<kw name="${i} IN RANGE [ 0 | ${length} ]" type="for">
+<kw name="${i} = 0" type="foritem">
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${line[${length-1}]}</arg>
+<arg>value13</arg>
+</arguments>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<kw name="${i} = 1" type="foritem">
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${line[${length-1}]}</arg>
+<arg>value13</arg>
+</arguments>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<kw name="${i} = 2" type="foritem">
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${line[${length-1}]}</arg>
+<arg>value13</arg>
+</arguments>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${line}</arg>
+</arguments>
+<msg timestamp="20190724 16:53:13.263" level="INFO">Length is 3</msg>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<kw name="Close CSV File" library="LibraryResource">
+<arguments>
+<arg>${fileob}</arg>
+</arguments>
+<kw name="Close Csv File From Device" library="csvreader">
+<arguments>
+<arg>${fileobject}</arg>
+</arguments>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<status status="PASS" starttime="20190724 16:53:13.263" endtime="20190724 16:53:13.263"></status>
+</kw>
+<doc>This is a test to read from CSV file</doc>
+<tags>
+<tag>currentRun</tag>
+</tags>
+<status status="PASS" starttime="20190724 16:53:13.248" endtime="20190724 16:53:13.263" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20190724 16:53:13.201" endtime="20190724 16:53:13.263"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">currentRun</stat>
+<stat pass="1" fail="0">lastrun</stat>
+</tag>
+<suite>
+<stat pass="2" fail="0" id="s1" name="Libraryimport">Libraryimport</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
